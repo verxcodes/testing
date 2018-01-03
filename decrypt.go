@@ -12,16 +12,16 @@ import (
 type Msg struct {
 	Url        string    `json:"URL"`
 	UUID       uuid.UUID `json:"UUID"`
-	ProdCode   string    `json:"product_code"`
-	SerNum     string    `json:"serial_number"`
-	Batch      string    `json:"batch_number"`
-	Expiration string    `json:"expiration_date"`
-	OtherInfo  string    `json:"other_info"`
+	ProdCode   string    `json:"prd"`
+	SerNum     string    `json:"ser"`
+	Batch      string    `json:"batch"`
+	Expiration string    `json:"expires"` // StandardClaims already have exp for ExpiresAt
+	OtherInfo  string    `json:"other"`
 	jwt.StandardClaims
 }
 
 func main() {
-	const tokenString = `eyJhbGciOiJFUzM4NCIsInR5cCI6IkpXVCJ9.eyJVUkwiOiJodHRwczovL3ZlcnguY29kZXMvcHVibGljX2tleS5wZW0iLCJVVUlEIjoiNmI5YzE1OTMtYmRmYy00NWY0LTgzOGYtMjJhODYzNWZlYWY3IiwicHJvZHVjdF9jb2RlIjoiMDk4NzY1NDMyMTA5ODIiLCJzZXJpYWxfbnVtYmVyIjoiMTIzNDVBWlJRRjEyMzQ1Njc4OTAiLCJiYXRjaF9udW1iZXIiOiJBMUMyRTNHNEk1IiwiZXhwaXJhdGlvbl9kYXRlIjoiMjAxODA3MjEiLCJvdGhlcl9pbmZvIjoiJ3t0ZXN0OiIsImp0aSI6IlZlcngiLCJpc3MiOiJ2ZXJ4In0.tQopyHHw0QpSBJOUg2mPlTt3IVV4QIim38G7wA4gFYQmtbF--svGHN8LKh8jM1Oc5yY3G_JmPEoat4BT453urRwcFZoBdkel8HY6YyAhEKusm5AfI9Kahix7C8KUiqx9`
+	const tokenString = `eyJhbGciOiJFUzM4NCIsInR5cCI6IkpXVCJ9.eyJVUkwiOiJodHRwczovL3ZlcnguY29kZXMvcHVibGljX2tleS5wZW0iLCJVVUlEIjoiMzQ3ZmMwZmMtZGMxNy00YWEyLWI3MjAtNWY4YjY0Y2Q2ZjVjIiwicHJkIjoiMDk4NzY1NDMyMTA5ODIiLCJzZXIiOiIxMjM0NUFaUlFGMTIzNDU2Nzg5MCIsImJhdGNoIjoiQTFDMkUzRzRJNSIsImV4cGlyZXMiOiIyMDE4MDcyMSIsIm90aGVyIjoie1widGVzdFwiOiB0cnVlfSIsImp0aSI6IlZlcngiLCJpc3MiOiJ2ZXJ4In0.FNSjzuriFU3xeAdVkYYCw3or_ZZ8QwYZPLCVkOjRw2zppF7LcYJL6KY2mze3lMOzEVwbaC3D8LECC25KrmVae3MgohmuMV9Wrh0Q9hgG0R0-iRrNola2Azb2d6r7zNhm`
 
 	const pubPEM = `-----BEGIN PUBLIC KEY-----
 MHYwEAYHKoZIzj0CAQYFK4EEACIDYgAEW30TKO1egsJFrrn1u0scTn24sDiflGI2
